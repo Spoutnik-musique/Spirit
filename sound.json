@@ -9,7 +9,7 @@
   {
     "id": "fire",
     "name": "Le feu",
-    "src": "https://raw.githubusercontent.com/Spoutnik-musique/YemaVision/refs/heads/main/RAINClth_Pluie%20sous%20un%20parapluie%20(ID%202679)_LS.mp3",
+    "src": "https://raw.githubusercontent.com/Spoutnik-musique/Spirit/refs/heads/main/src/fire.mp3",
     "icon": "https://raw.githubusercontent.com/Spoutnik-musique/YemaVision/refs/heads/main/Fire.png",
     "bg": "url(\"https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGk4cXB3cWo2cWE2dGJoOWttN3hnbG9iMXBqMG93OHFtMWYyd2JxaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Za3Sp42g4aMXyxTQDp/giphy.gif\")"
   },
