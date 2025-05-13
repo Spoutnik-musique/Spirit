@@ -1,0 +1,23 @@
+[
+  {
+    "id": "rain",
+    "name": "La pluie",
+    "src": "https://raw.githubusercontent.com/Spoutnik-musique/YemaVision/refs/heads/main/RAINConc_Pluie%20sur%20beton%20(ID%201289)_LS.mp3",
+    "icon": "https://raw.githubusercontent.com/Spoutnik-musique/YemaVision/refs/heads/main/Cloud%20with%20rain.png",
+    "bg": "url(\"https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExamVsZnlnNHFqcjZmMWl0cW52Ym43ZDE1N21hZmp6ZW5xYWQyNGQyaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/t7Qb8655Z1VfBGr5XB/giphy.gif\")"
+  },
+  {
+    "id": "fire",
+    "name": "Le feu",
+    "src": "https://raw.githubusercontent.com/Spoutnik-musique/YemaVision/refs/heads/main/RAINClth_Pluie%20sous%20un%20parapluie%20(ID%202679)_LS.mp3",
+    "icon": "https://raw.githubusercontent.com/Spoutnik-musique/YemaVision/refs/heads/main/Fire.png",
+    "bg": "url(\"https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGk4cXB3cWo2cWE2dGJoOWttN3hnbG9iMXBqMG93OHFtMWYyd2JxaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Za3Sp42g4aMXyxTQDp/giphy.gif\")"
+  },
+  {
+    "id": "forest",
+    "name": "Forest",
+    "src": "https://raw.githubusercontent.com/Spoutnik-musique/YemaVision/refs/heads/main/AMBForst_Foret%20(ID%200100)_LS.mp3",
+    "icon": "https://raw.githubusercontent.com/Spoutnik-musique/YemaVision/refs/heads/main/Evergreen%20tree.png",
+    "bg": "url(\"https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXdobzdiYzNvbnh6cDU0anpjMnRnZjU5bHFibDA3bWt1MWwxMXdibiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKVaf0pflGFzlzW/giphy.gif\")"
+  }
+]

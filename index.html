@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Spirit</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: rgba(19, 19, 19, 0.85);
+  color: white;
+  transition: background-image 0.6s ease, background-color 0.6s ease;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.822);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: -1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+.sound-card {
+  background: rgba(19, 19, 19, 0.85);
+  border-radius: 16px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: 0.2s ease;
+}
+
+.sound-card.selected {
+  border-color: #2e2e2e;
+  box-shadow: 0 0 10px #4a4a4a; /* gris à la place de violet */
+}
+
+.sound-card img {
+  width: 40px;
+  margin-bottom: 8px;
+}
+
+.sound-card span {
+  font-weight: bold;
+  text-align: center;
+}
+
+.player-bar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(19, 19, 19, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 12px 24px;
+  box-shadow: 0 8px 20px rgba(22, 22, 22, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 300px;
+  max-width: 90%;
+  z-index: 100;
+}
+
+.player-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.player-left .play-btn {
+  background-color: #242424;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 4px 10px rgba(14, 14, 14, 0.4);
+}
+
+.player-left .play-btn:hover {
+  background-color: #363636;
+}
+
+#activeTitle {
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.player-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.icon-btn:hover {
+  color: #a0a0a0; /* gris clair à la place de violet */
+}
+
+.player-left .play-btn {
+  background-color: #1a1a1a; /* gris foncé au lieu de violet */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background: #1b1b1b; /* gris foncé uniforme */
+  padding: 24px;
+  border-radius: 12px;
+  width: 400px;
+}
+
+.modal-header {
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #3a3a3a;
+  border-radius: 3px;
+  outline: none;
+  transition: background 0.3s;
+}
+
+.volume-slider:hover {
+  background: #4a4a4a;
+}
+
+/* WebKit */
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #a0a0a0;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.2);
+  transition: background 0.3s;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  background: #c0c0c0;
+}
+
+/* Firefox */
+.volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #a0a0a0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.volume-slider::-moz-range-thumb:hover {
+  background: #c0c0c0;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+<div class="grid" id="sound-grid">
+  <!-- Sound Cards Here -->
+</div>
+
+<div class="player-bar">
+  <div class="player-left">
+    <div class="play-btn" id="togglePlay"><i class="bi bi-play-fill"></i></div>
+    <span id="activeTitle">Aucun son</span>
+  </div>
+  <div class="player-right">
+    <button class="icon-btn" id="showActive"><i class="bi bi-eye"></i></button>
+    <button class="icon-btn" id="showVolume"><i class="bi bi-volume-up"></i></button>
+  </div>
+</div>
+
+
+<!-- Modal: Active Sounds -->
+<div class="modal" id="modalActive">
+  <div class="modal-content">
+    <div class="modal-header">Sons activés</div>
+    <ul id="activeList"></ul>
+  </div>
+</div>
+
+<!-- Modal: Volume Control -->
+<div class="modal" id="modalVolume">
+  <div class="modal-content">
+    <div class="modal-header">Contrôler le Volume</div>
+    <div id="volumeControls"></div>
+  </div>
+</div>
+
+<audio id="audioPlayer" loop></audio>
+
+<script>
+
+const state = {
+  active: {},
+  isPlaying: true
+};
+
+const grid = document.getElementById('sound-grid');
+const audio = document.getElementById('audioPlayer');
+const playBtn = document.getElementById('togglePlay');
+const activeTitle = document.getElementById('activeTitle');
+
+let sounds = [];
+
+fetch('sound.json')
+  .then(response => response.json())
+  .then(data => {
+    sounds = data;
+    initSoundCards();
+  });
+
+function initSoundCards() {
+  sounds.forEach(sound => {
+    const div = document.createElement('div');
+    div.className = 'sound-card';
+    div.dataset.id = sound.id;
+    div.innerHTML = `<img src="${sound.icon}" alt="${sound.name}"><span>${sound.name}</span>`;
+    div.addEventListener('click', () => toggleSound(sound));
+    grid.appendChild(div);
+  });
+}
+
+
+  // Create sound cards
+  sounds.forEach(sound => {
+    const div = document.createElement('div');
+    div.className = 'sound-card';
+    div.dataset.id = sound.id;
+div.innerHTML = `<img src="${sound.icon}" alt="${sound.name}"><span>${sound.name}</span>`;
+    div.addEventListener('click', () => toggleSound(sound));
+    grid.appendChild(div);
+  });
+
+  function toggleSound(sound) {
+    const card = document.querySelector(`[data-id="${sound.id}"]`);
+if (state.active[sound.id]) {
+  state.active[sound.id].audio.pause();
+  state.active[sound.id].audio.currentTime = 0;
+  delete state.active[sound.id];
+  card.classList.remove('selected');
+}
+ else {
+      state.active[sound.id] = {
+        audio: new Audio(sound.src),
+        volume: 1,
+        name: sound.name
+      };
+      state.active[sound.id].audio.loop = true;
+      state.active[sound.id].audio.volume = 1;
+      state.active[sound.id].audio.play();
+      card.classList.add('selected');
+    }
+    updatePlayerInfo();
+  }
+function updatePlayerInfo() {
+  const keys = Object.keys(state.active);
+  if (keys.length === 0) {
+    activeTitle.textContent = 'Aucun son';
+    document.body.style.backgroundImage = '';
+    document.body.style.backgroundColor = '#0a0a13';
+  } else {
+    const loudestId = keys.sort((a, b) => state.active[b].volume - state.active[a].volume)[0];
+    const loudest = sounds.find(s => s.id === loudestId);
+    activeTitle.textContent = loudest.name;
+    document.body.style.backgroundImage = loudest.bg || '';
+  }
+}
+
+
+  // Play / Pause
+  playBtn.addEventListener('click', () => {
+    state.isPlaying = !state.isPlaying;
+    playBtn.innerHTML = state.isPlaying ? '<i class="bi bi-pause-fill"></i>' : '<i class="bi bi-play-fill"></i>';
+    Object.values(state.active).forEach(({ audio }) => {
+      if (state.isPlaying) audio.play();
+      else audio.pause();
+    });
+  });
+
+  // Active sounds modal
+  document.getElementById('showActive').addEventListener('click', () => {
+    const modal = document.getElementById('modalActive');
+    const list = document.getElementById('activeList');
+    list.innerHTML = '';
+    Object.keys(state.active).forEach(key => {
+      const li = document.createElement('li');
+      li.textContent = state.active[key].name;
+      list.appendChild(li);
+    });
+    modal.style.display = 'flex';
+  });
+
+  // Volume modal
+  document.getElementById('showVolume').addEventListener('click', () => {
+    const modal = document.getElementById('modalVolume');
+    const container = document.getElementById('volumeControls');
+    container.innerHTML = '';
+    Object.keys(state.active).forEach(id => {
+      const item = document.createElement('div');
+      item.className = 'volume-item';
+      item.innerHTML = `
+        <label>${state.active[id].name}</label>
+        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="${state.active[id].volume}">
+      `;
+      const slider = item.querySelector('input');
+      slider.addEventListener('input', (e) => {
+        const val = parseFloat(e.target.value);
+        state.active[id].volume = val;
+        state.active[id].audio.volume = val;
+        updatePlayerInfo();
+      });
+      container.appendChild(item);
+    });
+    modal.style.display = 'flex';
+  });
+
+  // Fermer modals au clic en dehors
+  document.querySelectorAll('.modal').forEach(modal => {
+    modal.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal')) modal.style.display = 'none';
+    });
+  });
+</script>
+</body>
+</html>
