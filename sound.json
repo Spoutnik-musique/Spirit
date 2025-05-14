@@ -19,5 +19,33 @@
     "src": "https://raw.githubusercontent.com/Spoutnik-musique/YemaVision/refs/heads/main/AMBForst_Foret%20(ID%200100)_LS.mp3",
     "icon": "https://raw.githubusercontent.com/Spoutnik-musique/YemaVision/refs/heads/main/Evergreen%20tree.png",
     "bg": "url(\"https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXdobzdiYzNvbnh6cDU0anpjMnRnZjU5bHFibDA3bWt1MWwxMXdibiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKVaf0pflGFzlzW/giphy.gif\")"
+  },
+  {
+    "id": "goutte",
+    "name": "Goutte d'eau",
+    "src": "https://raw.githubusercontent.com/Spoutnik-musique/Spirit/refs/heads/main/src/gouttedeau.mp3",
+    "icon": "https://raw.githubusercontent.com/Spoutnik-musique/Spirit/refs/heads/main/icon/Droplet.png",
+    "bg": "url(\"https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTAzczI5NGh6MnBpMzNuN3RnamV0cGFqaml3OTRodnNjazk1eWd4eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vnNHyroyEwb4s/giphy.gif\")"
+  },
+  {
+    "id": "tonerre",
+    "name": "tonerre",
+    "src": "https://raw.githubusercontent.com/Spoutnik-musique/Spirit/refs/heads/main/src/tonerre.mp3",
+    "icon": "https://raw.githubusercontent.com/Spoutnik-musique/Spirit/refs/heads/main/icon/High voltage.png",
+    "bg": "url(\"https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGpyNmo2NGRsdHh0Z2xxajFlc2Vld3hqdjBzbHFkcmk1ZHhrZ2ljMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0MYzA5czu7GV1Xt6/giphy.gif\")"
+  },
+  {
+    "id": "tornado",
+    "name": "Vent",
+    "src": "https://raw.githubusercontent.com/Spoutnik-musique/Spirit/refs/heads/main/src/vent.mp3",
+    "icon": "https://raw.githubusercontent.com/Spoutnik-musique/Spirit/refs/heads/main/icon/Tornado.png",
+    "bg": "url(\"https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHhnZGp6dmJpbTlseGdubGd6Y3h4dHVtZHB0ZGR5cjVodmI3Y3FrOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/HmTLatwLWpTQk/giphy.gif\")"
+  },
+  {
+    "id": "Water wave",
+    "name": "Vague",
+    "src": "https://raw.githubusercontent.com/Spoutnik-musique/Spirit/refs/heads/main/src/vague.mp3",
+    "icon": "https://raw.githubusercontent.com/Spoutnik-musique/Spirit/refs/heads/main/icon/Water wave.png",
+    "bg": "url(\"https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3BkdjV4ajJ5eGpzNDZidmZzOXJnc3h2cWx5eDB4OWx3dW16YWh2NSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l3fQnAa8cHBgzVQFq/giphy.gif\")"
   }
 ]
